@@ -1,0 +1,12 @@
+@'
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+backend/.venv/
+backend/mandi_mitra.db
+*.db
+*.sqlite3
+.env
+*.log
+'@ | Set-Content .gitignore

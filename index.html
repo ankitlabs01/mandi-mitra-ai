@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#14532d" />
+  <title>Mandi Mitra AI — Smart Decisions. Better Farming.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <div class="auth-brand"><span>🌱</span><div><strong>mandi mitra</strong><small>SMART FARMING, BETTER RETURNS</small></div></div>
+      <div class="auth-intro"><span class="eyebrow">WELCOME TO YOUR FARMING WORKSPACE</span><h1 id="authHeading">Your next better sale starts here.</h1><p class="muted">Sign in or create an account to continue to Mandi Mitra AI.</p></div>
+      <div class="auth-tabs"><button class="auth-tab active" id="showLogin" type="button">Login</button><button class="auth-tab" id="showRegister" type="button">Create account</button></div>
+      <form id="loginForm" class="auth-form">
+        <label>Email address<input name="email" type="email" placeholder="you@example.com" required autocomplete="email"></label>
+        <label>Password<input name="password" type="password" placeholder="Enter your password" required minlength="8" autocomplete="current-password"></label>
+        <button class="primary-btn full" type="submit">Login to workspace →</button>
+      </form>
+      <form id="registerForm" class="auth-form" hidden>
+        <label>Full name<input name="full_name" type="text" placeholder="Your full name" required minlength="2" maxlength="100" autocomplete="name"></label>
+        <label>Email address<input name="email" type="email" placeholder="you@example.com" required autocomplete="email"></label>
+        <label>Password<input name="password" type="password" placeholder="At least 8 characters" required minlength="8" maxlength="128" autocomplete="new-password"></label>
+        <label>I am a<select name="role"><option value="farmer">Farmer</option><option value="buyer">Buyer</option><option value="fpo">FPO representative</option></select></label>
+        <div class="auth-two"><label>Village<input name="village" placeholder="e.g. Anekal"></label><label>District<input name="district" placeholder="e.g. Bengaluru Urban"></label></div>
+        <button class="primary-btn full" type="submit">Create my account →</button>
+      </form>
+      <p class="auth-message" id="authMessage" role="status"></p>
+      <p class="auth-footnote">Development build · Use a unique email for testing. Never use a reused personal password in a demo.</p>
+    </div>
+  </section>
+  <div class="app-shell" id="appShell" style="display:none">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Mandi Mitra home">
+        <span class="brand-mark">🌱</span><span><b>mandi mitra</b><small>SMART FARMING, BETTER RETURNS</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav id="nav">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-page="markets"><span>↗</span> Market prices</button>
+        <button class="nav-item" data-page="decision"><span>◷</span> Sell now vs wait</button>
+        <button class="nav-item" data-page="crops"><span>♧</span> My crops & harvest</button>
+        <button class="nav-item" data-page="buyers"><span>♙</span> Find buyers</button>
+        <button class="nav-item" data-page="listings"><span>＋</span> List produce</button>
+        <button class="nav-item" data-page="assistant"><span>✧</span> AI assistant</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">☏</div><b>Need a hand?</b><p>Ask Mitra for help with your next sale.</p><button data-page="assistant">Talk to Mitra →</button></div>
+        <div class="user-mini"><div class="avatar" id="userAvatar">MM</div><div><b id="userName">Mandi Mitra user</b><small id="userRole">Workspace</small></div><button id="logoutBtn" title="Log out" aria-label="Log out">↪</button></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="crumb">Workspace <span>/</span> <b id="pageCrumb">Dashboard</b></div>
+        <div class="top-actions"><span class="demo-pill"><i></i> DEMO DATA</span><button class="icon-btn" title="Notifications">♧<em></em></button><div class="top-avatar">AJ</div></div>
+      </header>
+      <div class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row"><div><div class="eyebrow">WEDNESDAY, 12 NOVEMBER 2026</div><h1>Namaste, Ankit <span>👋</span></h1><p class="muted">Let's find the best selling opportunity for your crops today.</p></div><button class="primary-btn" data-page="decision">✧ Get selling advice</button></div>
+          <div class="location-strip"><span>⌖</span><div><b>Your market area</b><small>Anekal, Bengaluru Urban, Karnataka</small></div><button class="text-btn" id="changeLocation">Change</button><span class="freshness">Sample market data · Not live</span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Registered crops</span><span class="stat-icon green">♧</span></div><strong id="statCrops">3</strong><small class="positive">Your crop portfolio</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Available produce</span><span class="stat-icon yellow">▤</span></div><strong>42 <small class="unit">quintals</small></strong><small class="muted">Across your crop records</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Estimated value</span><span class="stat-icon blue">₹</span></div><strong>₹84,600</strong><small class="muted">Illustrative estimate</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Buyer offers</span><span class="stat-icon purple">♙</span></div><strong id="statOffers">4</strong><small class="positive">Demo marketplace offers</small></article>
+          </div>
+          <div class="section-heading"><div><h2>Market snapshot</h2><p>Indicative prices from selected nearby markets</p></div><button class="text-btn" data-page="markets">View all markets →</button></div>
+          <div class="table-card"><div class="table-head"><b>Today's mandi prices</b><span class="tag demo">DEMO DATA</span></div><div class="table-wrap"><table><thead><tr><th>Crop</th><th>Market</th><th>Modal price / qtl</th><th>Trend</th><th>Updated</th></tr></thead><tbody id="marketRows"></tbody></table></div></div>
+          <div class="two-col">
+            <div class="panel"><div class="panel-head"><div><h3>Your selling checklist</h3><p>Small steps before you sell</p></div><span class="soft-icon">✓</span></div><div class="check-list"><label><input type="checkbox" checked> Add your crop and quantity</label><label><input type="checkbox"> Compare nearby mandi rates</label><label><input type="checkbox"> Check transport expenses</label><label><input type="checkbox"> Compare buyer offers</label></div></div>
+            <div class="panel recommendation"><div class="panel-head"><div><span class="tag ai">✧ MITRA INSIGHT</span><h3>Compare net returns, not just prices</h3></div><span class="bulb">✦</span></div><p>A mandi showing a higher price may still give you less after transport and handling costs. Compare the full selling cost before deciding.</p><button class="secondary-btn" data-page="decision">Open selling calculator →</button></div>
+          </div>
+        </section>
+
+        <section class="page" id="page-markets">
+          <div class="page-title"><div><div class="eyebrow">MARKET INTELLIGENCE</div><h1>Market prices</h1><p class="muted">Compare indicative crop prices across nearby markets.</p></div><span class="tag demo">DEMO DATA · NOT LIVE</span></div>
+          <div class="filter-bar"><label>Search crop or mandi<input id="marketSearch" placeholder="e.g. Tomato, Anekal"></label><label>Crop<select id="cropFilter"><option value="all">All crops</option><option>Tomato</option><option>Onion</option><option>Ragi</option><option>Maize</option></select></label><label>Market area<select id="marketFilter"><option value="all">All locations</option><option>Anekal</option><option>Ramanagara</option><option>Hosur</option><option>Kolar</option></select></label></div>
+          <div class="table-card"><div class="table-head"><b>Market comparison</b><span class="muted small" id="marketCount"></span></div><div class="table-wrap"><table><thead><tr><th>Crop</th><th>Market</th><th>Min price</th><th>Max price</th><th>Modal price</th><th>Trend</th></tr></thead><tbody id="allMarketRows"></tbody></table></div></div>
+          <div class="notice">ⓘ These are illustrative sample values for testing the interface. They are not verified mandi prices and must not be used for a real sale decision.</div>
+        </section>
+
+        <section class="page" id="page-decision">
+          <div class="page-title"><div><div class="eyebrow">DECISION SUPPORT</div><h1>Sell now vs. wait</h1><p class="muted">Estimate what you may keep after costs and possible spoilage.</p></div><span class="tag ai">✧ MITRA CALCULATOR</span></div>
+          <div class="calculator-layout"><div class="panel form-panel"><h3>Your crop details</h3><p class="muted small">Enter your own values. The result is a calculation, not a guaranteed prediction.</p>
+            <div class="form-grid"><label>Crop<select id="decisionCrop"><option>Tomato</option><option>Onion</option><option>Ragi</option><option>Maize</option></select></label><label>Quantity (quintals)<input id="quantity" type="number" min="0.1" value="10" step="0.1"></label><label>Sell price today (₹ / qtl)<input id="todayPrice" type="number" min="0" value="1800"></label><label>Expected future price (₹ / qtl)<input id="futurePrice" type="number" min="0" value="2050"></label><label>Waiting days<input id="days" type="number" min="0" value="7"></label><label>Transport cost today (₹)<input id="transport" type="number" min="0" value="1200"></label><label>Storage cost (₹)<input id="storage" type="number" min="0" value="500"></label><label>Other expenses (₹)<input id="other" type="number" min="0" value="200"></label><label>Estimated spoilage (%)<input id="spoilage" type="number" min="0" max="100" value="3"></label><label>Urgent cash need<select id="urgent"><option value="no">No</option><option value="yes">Yes</option></select></label></div>
+            <button class="primary-btn full" id="calculateBtn">Calculate my options →</button>
+          </div><div class="panel result-panel"><span class="tag ai">YOUR ESTIMATE</span><h3>Estimated net return</h3><div class="result-amount" id="bestReturn">₹16,800</div><div class="result-caption" id="bestLabel">If you sell today</div><div class="result-divider"></div><div class="result-line"><span>Sell today</span><b id="todayReturn">₹16,800</b></div><div class="result-line"><span>Wait and sell</span><b id="waitReturn">₹18,160</b></div><div class="result-line"><span>Estimated quantity lost</span><b id="lostQty">0.30 qtl</b></div><div class="result-line"><span>Potential difference</span><b class="positive" id="difference">+₹1,360</b></div><div class="recommend-box" id="recommendation">Based on these inputs, waiting has a higher estimated return. Consider spoilage, price uncertainty and your cash needs.</div><small class="muted">Assumes the future price is achieved. No forecast model or live market feed is connected.</small></div></div>
+        </section>
+
+        <section class="page" id="page-crops">
+          <div class="page-title"><div><div class="eyebrow">FARM MANAGEMENT</div><h1>My crops & harvest</h1><p class="muted">Keep your crop quantities and harvest plans in one place.</p></div><button class="primary-btn" id="addCropBtn">＋ Add a crop</button></div>
+          <div class="crop-grid" id="cropGrid"></div>
+          <div class="panel"><h3>Harvest planning</h3><p class="muted small">Update your crop records as the season progresses.</p><div class="table-wrap"><table><thead><tr><th>Crop</th><th>Quantity</th><th>Expected harvest</th><th>Status</th><th>Action</th></tr></thead><tbody id="cropTable"></tbody></table></div></div>
+        </section>
+
+        <section class="page" id="page-buyers">
+          <div class="page-title"><div><div class="eyebrow">BUYER MARKETPLACE</div><h1>Find buyers</h1><p class="muted">Explore sample buyer profiles and compare requirements.</p></div><span class="tag demo">DEMO PROFILES</span></div>
+          <div class="filter-bar"><label>Search buyers<input id="buyerSearch" placeholder="Search crop, business or location"></label><label>Crop<select id="buyerCrop"><option value="all">All crops</option><option>Tomato</option><option>Onion</option><option>Ragi</option><option>Maize</option></select></label></div><div class="buyer-grid" id="buyerGrid"></div>
+          <div class="notice">Buyer profiles shown here are sample records. Contact and verification are not connected to real businesses.</div>
+        </section>
+
+        <section class="page" id="page-listings">
+          <div class="page-title"><div><div class="eyebrow">SELL YOUR PRODUCE</div><h1>List produce</h1><p class="muted">Create a local demo listing to preview the seller workflow.</p></div></div>
+          <div class="panel listing-panel"><form id="listingForm"><div class="form-grid"><label>Crop name<input required name="crop" placeholder="e.g. Tomato"></label><label>Variety<input name="variety" placeholder="e.g. Hybrid"></label><label>Quantity<input required name="quantity" type="number" min="0.1" step="0.1"></label><label>Unit<select name="unit"><option>Quintals</option><option>Kg</option><option>Tonnes</option></select></label><label>Expected price (₹)<input required name="price" type="number" min="1"></label><label>Grade<select name="grade"><option>A</option><option>B</option><option>C</option></select></label><label>Village<input name="village" placeholder="Village"></label><label>District<input name="district" placeholder="District"></label></div><label class="wide-label">Description<textarea name="description" rows="3" placeholder="Describe quality, harvest date and pickup details"></textarea></label><button class="primary-btn" type="submit">Publish demo listing →</button></form></div>
+          <div class="panel"><h3>Your demo listings</h3><div id="listingResults" class="listing-results"><p class="muted">No listings created in this session yet.</p></div></div>
+        </section>
+
+        <section class="page" id="page-assistant">
+          <div class="page-title"><div><div class="eyebrow">YOUR FARMING COMPANION</div><h1>Ask Mitra</h1><p class="muted">Get help understanding selling costs and market choices.</p></div><span class="tag ai">✧ ASSISTANT DEMO</span></div>
+          <div class="chat-layout"><div class="chat-card"><div class="chat-head"><div class="mitra-avatar">🌱</div><div><b>Mitra Assistant</b><small><i class="online-dot"></i> Demo mode · No live AI connected</small></div><button class="text-btn" id="clearChat">Clear chat</button></div><div class="chat-messages" id="chatMessages"><div class="bubble assistant">Namaste! I'm Mitra. I can help you compare selling options, understand mandi prices and calculate transport costs. What would you like to know?</div></div><div class="suggestions"><button>How do I compare two mandis?</button><button>Should I sell tomatoes today?</button><button>How does spoilage affect profit?</button></div><form id="chatForm" class="chat-input"><input id="chatInput" placeholder="Type your farming question..." autocomplete="off"><button class="primary-btn" type="submit">Send ↑</button></form></div><aside class="chat-side panel"><h3>Things I can help with</h3><p>↗ Understanding sample market prices</p><p>₹ Calculating estimated net returns</p><p>♧ Crop and harvest planning</p><p>♙ Preparing questions for buyers</p><div class="notice">For reliable advice, connect a verified market-data source and an agricultural AI service.</div></aside></div>
+        </section>
+        <footer>© 2026 Mandi Mitra AI <span>Smart Decisions. Better Farming.</span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="cropModal"><div class="modal"><button class="modal-close" id="closeModal">×</button><h2>Add a crop</h2><form id="cropForm"><label>Crop name<input name="name" required placeholder="e.g. Tomato"></label><label>Quantity (quintals)<input name="quantity" type="number" min="0.1" step="0.1" required></label><label>Expected harvest date<input name="date" type="date" required></label><label>Status<select name="status"><option>Growing</option><option>Almost Ready</option><option>Ready to Harvest</option><option>Harvested</option><option>Sold</option></select></label><button class="primary-btn full" type="submit">Save crop</button></form></div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
